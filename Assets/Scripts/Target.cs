@@ -14,6 +14,7 @@ public class Target : MonoBehaviour
     float maxTorque = 10f;
     float xRange = 4f;
     float ySpawnPos = -6f;
+    bool isCreate;
 
     void Start()
     {
@@ -25,9 +26,18 @@ public class Target : MonoBehaviour
         targetRb.AddTorque(RandomTorque(),
             RandomTorque(), RandomTorque(),
             ForceMode.Impulse);
-        transform.position = RandomSpawnPos();
+        if (!isCreate)
+        {
+            transform.position = RandomSpawnPos();
+        }
     }
 
+    public void SetPosition(Vector3 pos)
+    {
+        isCreate = true;
+        transform.position = pos;
+    }
+    
     Vector3 RandomForce()
     {
         return Vector3.up *
@@ -55,6 +65,10 @@ public class Target : MonoBehaviour
                 transform.position,
                 explosionParticle[index].transform.rotation);
             gm.UpdateScore(pointValue);
+            if (gameObject.CompareTag("CREATE"))
+            {
+                gm.CreateTarget(transform.position);
+            }
         }
     }
 

@@ -157,6 +157,7 @@ MonoBehaviour:
   - {fileID: 5161306798411054686, guid: 3688853e2b2f85247bf746801fa82d54, type: 3}
   - {fileID: 7685747878863303492, guid: eaebcd5bee108b04c9f0f9400960f0f7, type: 3}
   - {fileID: 9134191541397708812, guid: 3c07ca00fd6b75147a26007ed8e70e4e, type: 3}
+  - {fileID: 8054843661454191951, guid: 569cb416e060fe14da433bd00a96cfe7, type: 3}
   scoreText: {fileID: 994336206}
   gameOverText: {fileID: 2068524099}
   titleScreen: {fileID: 1866401298}
