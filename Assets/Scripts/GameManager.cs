@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
     public GameObject gameOverText;
     public GameObject titleScreen;
     public bool isGameActive;
     public Button restartButton;
+    public Slider slider;
     float spawnRate = 1.0f;
     int score;
+    int lives;
     void Start()
     {
         GameOver(false);
@@ -42,6 +45,16 @@ public class GameManager : MonoBehaviour
         scoreText.text = $"Score : {score}";
     }
 
+    public void UpdateLives(int liveToSub)
+    {
+        lives -= liveToSub;
+        livesText.text = $"Lives : {lives}";
+        if (lives <= 0)
+        {
+            GameOver(true);
+        }
+    }
+    
     public void GameOver(bool value)
     {
         isGameActive = !value;
@@ -54,13 +67,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(
             SceneManager.GetActiveScene().name);
     }
-    
+
     public void StartGame(float difficulty)
     {
         spawnRate = difficulty;
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
+        lives = 3;
+        UpdateLives(0);
         titleScreen.SetActive(false);
+    }
+    
+    public void OnChangeSlide()
+    {
+        // volume
+        Debug.Log(slider.value);
     }
 }
