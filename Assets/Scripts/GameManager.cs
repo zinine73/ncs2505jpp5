@@ -29,12 +29,6 @@ public class GameManager : MonoBehaviour
             Instantiate(targets[index]);
         }
     }
-
-    public void CreatTarget(Vector3 pos)
-    {
-        int index = Random.Range(0, targets.Count);
-        Instantiate(targets[index]).GetComponent<Target>().SetPosition(pos);
-    }
     
     public void UpdateScore(int scoreToAdd)
     {

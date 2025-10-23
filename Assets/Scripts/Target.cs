@@ -7,7 +7,6 @@ public class Target : MonoBehaviour
 {
     public int pointValue;
     public ParticleSystem[] explosionParticle;
-    bool isCreat;
     GameManager gm;
     Rigidbody targetRb;
     float minSpeed = 12f;
@@ -26,16 +25,7 @@ public class Target : MonoBehaviour
         targetRb.AddTorque(RandomTorque(),
             RandomTorque(), RandomTorque(),
             ForceMode.Impulse);
-        if (!isCreat)
-        {
-            transform.position = RandomSpawnPos();
-        }
-    }
-
-    public void SetPosition(Vector3 pos)
-    {
-        isCreat = true;
-        transform.position = pos;
+        transform.position = RandomSpawnPos();
     }
 
     Vector3 RandomForce()
@@ -65,10 +55,6 @@ public class Target : MonoBehaviour
                 transform.position,
                 explosionParticle[index].transform.rotation);
             gm.UpdateScore(pointValue);
-            if (gameObject.CompareTag("CREAT"))
-            {
-                gm.CreatTarget(transform.position);
-            }
         }
     }
 
